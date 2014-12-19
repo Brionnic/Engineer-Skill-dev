@@ -1,0 +1,210 @@
+body {
+	color: 							rgb(2, 84, 106);
+	background-color:			    rgb(2, 84, 106);
+	font: 							12px Arial, sans-serif;
+	font-size:						16px;
+	float:							center;
+	position:						absolute;
+	left:							50px;
+	max-width:						1400px;
+	min-width:						1200px;
+	width:							auto;
+}
+
+p	{
+	margin-left:						20px;
+}
+
+h2	{
+	text-shadow:				#dadaff 5px 5px 10px;
+	margin:						10px 10px 10px 20px;
+}
+
+h3	{
+	text-shadow:				#dadaff 3px 3px 6px;
+	margin:						3px 5px 5px 7px;
+	font-size:					18px;
+	font-weight:				bold;
+}
+
+h5	{
+	text-shadow:				#dadaff 2px 2px 5px;
+	margin:						1px 1px 1px 10px;
+	font-size:					12px;
+	font-weight:				bold;
+}
+
+.ex_text a:link {
+	color: 						rgb(2, 84, 106);
+	text-decoration:			underline;
+	background:					#dfdfdf;
+	text-shadow:				#aaf 0px 0px 4px;
+	font-size:					14px;
+	font-weight:				normal;
+}
+
+.ex_text a:visited {
+	color: 						rgb(50, 10, 86);
+	text-decoration:			underline;
+	background:					#dfdfdf;
+	text-shadow:				#c7f 0px 0px 4px;
+	font-size:					14px;
+	font-weight:				normal;
+}
+
+.ex_text	{
+	font-size:					14px;
+	font-weight:				normal;
+}
+
+/* `Content Area
+-----------------------------------------*/
+.primary_content_container {
+	background:					url('whiteDivBase.png');
+	border: 							1px solid #02546A;
+	border-bottom-color: 		#333;
+	border-top-color: 			#fff;
+	border-radius: 				5px;
+	border-radius: 				5px;
+	-moz-border-radius: 		5px;
+	-moz-border-radius: 		5px;
+	-webkit-border-radius: 	5px;
+	-webkit-border-radius: 	5px;
+	margin: 							0px 0px 0px;
+	padding: 						0px 5px 5px;
+	width: 							1400px;
+	top:								0px;
+	left: 								0px;
+
+	-moz-box-shadow: 			10px 10px 15px -2px #024;
+	-webkit-box-shadow: 		10px 10px 15px -2px #024;
+}
+
+.table_container	{
+	border:						1px solid #888;
+	padding:					50px 20px;
+	margin:						50px;
+	margin-bottom:				3px;
+}
+
+.infobox	{
+	background-color: 			rgba(255,255,255,0.8);
+	margin:						5px 2px 5px 2px;
+	padding:					2px;
+	padding-bottom:			    5px;
+	margin:						5px;
+	margin-bottom:			    25px;
+	box-shadow:				    10px 10px 25px -6px #024;
+	font-size:					14px;
+	border:						1px solid #444;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+}
+
+.tablebox	{
+	background: 				#FAFAFF;
+	margin:						5px 5px 5px 5px;
+	padding:					8px;
+	margin:						2px;
+	margin-bottom:			    10px;
+	box-shadow:				    5px 5px 13px -5px #024;
+	font-size:					14px;
+	border:						1px solid #999;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+}
+
+.infomid {
+	background: 				#FFFFFF;
+	width:						250px;
+	margin:						2px 4px 2px 4px;
+	padding:					3px;
+	margin:						15px;
+	margin-bottom:			    3px;
+	text-align:					center;
+	-moz-box-shadow: 		    2px 2px 6px -3px #024;
+	-webkit-box-shadow: 	    2px 2px 6px -3px #024;
+	font-size:					14px;
+	border:						1px solid #999;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+}
+
+.skillbox {
+	width:						250px;
+	margin:						2px 4px 2px 4px;
+	padding:					3px;
+	text-align:					left;
+	font-size:					14px;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+    border-top:                 1px solid #bbb;
+    border-left:                1px solid #bbb;
+    border-right:               1px solid #888;
+    border-bottom:              1px solid #888;
+}
+
+.skillstrengthbox {
+	width:						85px;
+	margin:						2px 4px 2px 4px;
+	padding:					3px;
+	text-align:					center;
+	font-size:					14px;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+    border-top:                 1px solid #bbb;
+    border-left:                1px solid #bbb;
+    border-right:               1px solid #888;
+    border-bottom:              1px solid #888;
+}
+
+.infowide {
+	background: 				#FFFFFF;
+	width:						600px;
+	margin:						2px 4px 2px 4px;
+	padding:					3px;
+	margin:						15px;
+	margin-bottom:			    3px;
+	text-align:					center;
+	-moz-box-shadow: 		    2px 2px 6px -3px #024;
+	-webkit-box-shadow: 	    2px 2px 6px -3px #024;
+	font-size:					14px;
+	border:						1px solid #999;
+	-moz-border-radius:		    3px;
+	-webkit-border-radius:	    3px;
+	border-radius:				3px;
+}
+
+.trDark	{
+	background: 				#DFF0FF;
+}
+
+.trLight	{
+	background: 				#FFFFFF;
+}
+
+.myLi 			{
+	color: 						rgb(2, 84, 106);
+	border:						1px solid #CCC;
+	width:						auto;
+	padding:					5px 2px;
+	margin:						0px;
+	margin-bottom:				3px;
+	text-align:					center;
+
+	-moz-border-radius:			2px;
+	-webkit-border-radius:		2px;
+	border-radius:				2px;
+
+	-moz-box-shadow: 			1px 1px 5px -2px #024;
+	-webkit-box-shadow: 		1px 1px 5px -2px #024;
+}
+
+.links_list	{
+	list-style:					circle;
+}

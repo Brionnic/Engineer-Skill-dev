@@ -1,0 +1,24 @@
+<!--  Extend from base layout -->
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Search for Engineers with the requested skill</h1>
+    <form action="" method="post" name="skill_search">
+        {{form.hidden_tag()}}
+
+        <p>
+            Please enter the skill to find qualified engineers:<br>
+            {{form.skill_name(size=20)}}<br>
+
+            Please enter the skill level required for this request:<br>
+            (1 to 5)<br>
+            {{form.requested_skill_level(size=5)}}
+
+            {% for error in form.errors.openid %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}<br>
+        </p>
+        <p><input type="submit" value="Search"></p>
+
+    </form>
+{% endblock %}

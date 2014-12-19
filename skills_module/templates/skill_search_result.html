@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="infobox" id="table_container">
+<h2>Engineers matching requested skill(s) with the search term: {{requested_skill}}</h2>
+<hr>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+    {% if matches|length != 0 %}
+        <table id="matching_skill_table">
+            <thead>
+                <td class="skillbox"><h5><b>Engineer:</b></h5></td>
+                <td class="skillbox"><h5><b>Skill Name:</b></h5></td>
+                <td class="skillstrengthbox"><h5><b>Skill Strength:</b></h5></td>
+                <td class="skillstrengthbox"><h5><b>Desired Skill Strength:</b></h5></td>
+                <td class="skillbox"><h5><b>Category:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-1:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-2:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-3:</b></h5></td>
+            </thead>
+            {% for match in matches %}
+                {% include 'skill_search_result_match.html' %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <b>There are currently no matching skills.</b>
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#matching_skill_table').DataTable();
+        });
+    </script>
+<hr>
+<br>
+<a href="{{ url_for('index') }}">Back Home</a>
+<a href="{{ url_for('add_skill', engineer=engineer)}}">Add a Skill</a>
+<a href="{{ url_for('skill_search')}}">Search for Engineers Capable of a Certain Skill</a>
+</div>
+
+{% endblock %}

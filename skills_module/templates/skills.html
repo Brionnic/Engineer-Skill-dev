@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="infobox" id="table_container">
+<h2>{{ engineer.engineer_name_first + " " + engineer.engineer_name_last }}'s skills are:</h2>
+<h2>{{engineer.engineer}}</h2>
+<hr>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+
+    {% if skills|length != 0 %}
+        <table id="skill_table">
+            <thead>
+                <td class="skillbox"><h5><b>Category:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-1:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-2:</b></h5></td>
+                <td class="skillbox"><h5><b>Sub-Category-3:</b></h5></td>
+                <td class="skillbox"><h5><b>Skill:</b></h5></td>
+                <td class="skillstrengthbox"><h5><b>Skill Level:</b></h5></td>
+                <!--<td class="skillbox"><h5><b>Set Skill Level:</b></h5></td> -->
+                <td class="skillbox"><h5><b>Desired Skill Level:</b></h5></td>
+                <!-- <td class="skillstrengthbox"><h5><b>Change Skill Level</b></h5></td> -->
+            </thead>
+            {% for skill in skills %}
+                {% include 'skill.html' %}
+            {% endfor %}
+        </table>
+    {% else %}
+        <b>There are currently no skills.</b>
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+        $('#skill_table').DataTable();
+        });
+    </script>
+<hr>
+<br>
+<a href="{{url_for('index') }}">Back Home</a>
+<a href="{{url_for('add_skill', engineer=engineer)}}">Add a Skill</a>
+<a href="{{url_for('skill_search')}}">Search for Engineers Capable of a Certain Skill</a>
+</div>
+
+{% endblock %}

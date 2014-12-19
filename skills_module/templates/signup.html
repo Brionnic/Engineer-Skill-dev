@@ -1,0 +1,30 @@
+<!--  Extend from base layout -->
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Sign up a new username</h1>
+    <form action="" method="post" name="signup">
+        {{form.hidden_tag()}}
+
+        <p>
+            Please enter your new username name:<br>
+            {{form.engineer_id(size=80)}}<br>
+
+            Please enter your first name:<br>
+            {{form.engineer_name_first(size=26)}}<br>
+
+            Please enter your last name:<br>
+            {{form.engineer_name_last(size=40)}}<br>
+
+            Please enter your new user motto:<br>
+            {{form.message(size=50)}}<br>
+            {% for error in form.errors.openid %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}<br>
+        </p>
+
+        <p>{{form.remember_me}} Remember Me</p>
+        <p><input type="submit" value="Sign Up"></p>
+
+    </form>
+{% endblock %}

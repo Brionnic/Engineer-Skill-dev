@@ -1,0 +1,26 @@
+<!--  Extend from base layout -->
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Add a skill to {{ engineer }}</h1>
+    <form action="" method="post" name="add_skill">
+        {{form.hidden_tag()}}
+        <p>
+            Please enter the skill name:<br>
+            (Example 'Python')<br>
+            {{form.skill_name(size=100)}}<br>
+
+            Please enter the strength of the skill from 0 to 5:<br>
+            (Zero is no experience, three is having done some projects/tasks related to the skill, 5 is an expert capable of leading complex projects for this skill)<br>
+            {{form.skill_strength()}}
+
+
+            {% for error in form.errors.openid %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}<br>
+        </p>
+
+        <p><input type="submit" value="Submit skill"></p>
+
+    </form>
+{% endblock %}
