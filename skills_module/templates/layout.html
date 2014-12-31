@@ -5,7 +5,21 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <link type="text/css" rel="stylesheet" href="/static/stylin.css" />
-        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+{#        <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">#}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.dataTables.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery-ui.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery-ui-slider-pips.css') }}">
+{#	    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>#}
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery-1.8.2.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery.dataTables.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery.dataTables.editable.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery-ui-slider-pips.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ url_for('static', filename='jquery.jeditable.js') }}"></script>
+
+
+{#        {{ url_for('static', filename='jquery.dataTables.editable.js') }}#}
+
     </head>
     <body>
         <div class="primary_content_container">

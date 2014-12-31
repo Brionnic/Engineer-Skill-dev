@@ -1,6 +1,6 @@
 __author__ = 'brharden'
 
-from flask import Flask, render_template, request, redirect, url_for, abort, session
+from flask import Flask, render_template, request, redirect, url_for, abort, session, jsonify
 
 from flask_assets import Environment
 from webassets.loaders import PythonLoader as PythonAssetsLoader
@@ -106,6 +106,16 @@ def add_skill(engineer):
         return render_template('skills.html', title='Engineer Skills', engineer=engineer.engineer, skills=skill_list)
 
     return render_template('add_skill.html', title='Add a Skill', engineer=engineer.engineer, form=form)
+
+@app.route('/update_skill_level/', methods=['POST'])
+def update_skill_level():
+    form_data = {key: value for key, value in request.form.items()}
+    id = form_data['id']
+    skill_level = form_data['skill_level']
+    skill = Skills.query.filter_by(id=id).first()
+    skill.skill_strength = skill_level
+    db.session.commit()
+    return skill_level
 
 # use a range of 0 to 100 to generate a sort of non-linear distribution of scores from 0 to 5
 def random_skill_strength():

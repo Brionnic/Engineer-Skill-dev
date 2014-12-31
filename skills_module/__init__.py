@@ -39,6 +39,7 @@ from skills_module import views, models
 
 
 if __name__ == '__main__':
+    app.debug = True
     app.run()
 
 

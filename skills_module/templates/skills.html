@@ -2,25 +2,27 @@
 
 {% block content %}
 
-<div class="infobox" id="table_container">
+{#<div class="infobox" id="table_container">#}
+<div>
 <h2>{{ engineer.engineer_name_first + " " + engineer.engineer_name_last }}'s skills are:</h2>
 <h2>{{engineer.engineer}}</h2>
 <hr>
-    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+{#    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>#}
+{#	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>#}
 
 
     {% if skills|length != 0 %}
-        <table id="skill_table">
+{#        <div id="slider" width="35px"></div>#}
+        <table id="skill_table" class="display">
             <thead>
-                <td class="skillbox"><h5><b>Category:</b></h5></td>
-                <td class="skillbox"><h5><b>Sub-Category-1:</b></h5></td>
-                <td class="skillbox"><h5><b>Sub-Category-2:</b></h5></td>
-                <td class="skillbox"><h5><b>Sub-Category-3:</b></h5></td>
-                <td class="skillbox"><h5><b>Skill:</b></h5></td>
-                <td class="skillstrengthbox"><h5><b>Skill Level:</b></h5></td>
+                <td>Category:</td>
+                <td>Sub-Category-1:</td>
+                <td>Sub-Category-2:</td>
+                <td>Sub-Category-3:</td>
+                <td>Skill:</td>
+                <td>Skill Level:</td>
                 <!--<td class="skillbox"><h5><b>Set Skill Level:</b></h5></td> -->
-                <td class="skillbox"><h5><b>Desired Skill Level:</b></h5></td>
+                <td>Desired Skill Level:</td>
                 <!-- <td class="skillstrengthbox"><h5><b>Change Skill Level</b></h5></td> -->
             </thead>
             {% for skill in skills %}
@@ -31,11 +33,49 @@
         <b>There are currently no skills.</b>
     {% endif %}
 
-    <script type="text/javascript">
-        $(document).ready( function () {
-        $('#skill_table').DataTable();
+{#    <script type="text/javascript">#}
+{#        $(document).ready( function () {#}
+{#        $('#skill_table').DataTable();#}
+{#            $('#skill_table').DataTable();#}
+{#            $('#skill_table').makeEditable();#}
+{#        });#}
+{#    </script>#}
+    <script>
+        $.editable.addInputType('slider', {
+            element : function(settings, original) {
+                /* Hidden input to store value which is submitted to server. */
+                var hidden = $('<input type="hidden">');
+                $(this).append(hidden);
+                return(hidden);
+            },
+            submit: function(settings, original){
+                value = $('#slider', this).slider('option', 'value');
+                $('input', this).val(value)
+            },
+            content: function(string, settings, original){
+                var _slider = $('<div id="slider"></div>');
+                $(this).append(_slider);
+                _slider.slider({ max: 5, value: string});
+                _slider.slider("pips", {rest: "label"});
+                _slider.slider({
+                    change: function(event, ui) {
+                        $(this).closest('form').submit();
+                    }
+                } );
+            }
         });
     </script>
+    <script type="text/javascript" charset="utf-8">
+			$(document).ready( function () {
+				$('#skill_table').dataTable().makeEditable({
+                        oEditableSettings: { event: 'click' },
+                        sUpdateURL: "{{ url_for('update_skill_level') }}",
+                        sAddDataType: "json",
+                    aoColumns:[null, null, null, null, null, {type: 'slider', tooltip: 'Click to edit',indicator: 'Saving skill level...', name: 'skill_level'}, null]
+                })
+            });
+		</script>
+
 <hr>
 <br>
 <a href="{{url_for('index') }}">Back Home</a>

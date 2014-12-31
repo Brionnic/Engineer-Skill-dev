@@ -1,9 +1,10 @@
 __author__ = 'brharden'
 
 from flask.ext.wtf import Form
-from wtforms import StringField, IntegerField, BooleanField, TextAreaField
+from wtforms import StringField, IntegerField, BooleanField, TextAreaField, SelectField
 from wtforms.validators import Required
 from wtforms.validators import DataRequired, Length
+from models import Skills, db
 
 class LoginForm(Form):
     engineer_id = StringField('engineer_id', validators=[DataRequired()])
@@ -37,7 +38,9 @@ class RankSkill(Form):
     skill_strength = IntegerField('skill_strength', validators=[DataRequired()])
 
 class SkillSearch(Form):
-    skill_name = StringField('skill_name', validators=[DataRequired()])
+    #skill_name = StringField('skill_name', validators=[DataRequired()])
+    skills = [(skill[0], skill[0]) for skill in db.session.query(Skills.skill_name).distinct()]
+    skill_name = SelectField(u'skill_name', choices=skills)
     requested_skill_level = IntegerField('requested_skill_level', validators=[DataRequired()])
 
 
