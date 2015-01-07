@@ -111,11 +111,18 @@ def add_skill(engineer):
 def update_skill_level():
     form_data = {key: value for key, value in request.form.items()}
     id = form_data['id']
-    skill_level = form_data['skill_level']
     skill = Skills.query.filter_by(id=id).first()
-    skill.skill_strength = skill_level
+    result = None
+    if 'skill_level' in form_data:
+        skill_level = form_data['skill_level']
+        skill.skill_strength = skill_level
+        result = skill_level
+    if 'desired_skill_level' in form_data:
+        desired_skill_strength = form_data['desired_skill_level']
+        skill.desired_skill_strength = desired_skill_strength
+        result = desired_skill_strength
     db.session.commit()
-    return skill_level
+    return result
 
 # use a range of 0 to 100 to generate a sort of non-linear distribution of scores from 0 to 5
 def random_skill_strength():

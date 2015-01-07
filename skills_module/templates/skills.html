@@ -33,13 +33,6 @@
         <b>There are currently no skills.</b>
     {% endif %}
 
-{#    <script type="text/javascript">#}
-{#        $(document).ready( function () {#}
-{#        $('#skill_table').DataTable();#}
-{#            $('#skill_table').DataTable();#}
-{#            $('#skill_table').makeEditable();#}
-{#        });#}
-{#    </script>#}
     <script>
         $.editable.addInputType('slider', {
             element : function(settings, original) {
@@ -49,13 +42,23 @@
                 return(hidden);
             },
             submit: function(settings, original){
-                value = $('#slider', this).slider('option', 'value');
+                value = $('#slider', this).slider('value');
                 $('input', this).val(value)
             },
             content: function(string, settings, original){
                 var _slider = $('<div id="slider"></div>');
                 $(this).append(_slider);
-                _slider.slider({ max: 5, value: string});
+                var min_level = 0;
+                if (settings["name"] == "desired_skill_level") {
+                    //Set the minimum value for desired skill level
+                    curr_skill_level = $(original).closest("tr").find(".skill_level").html();
+                    if (Math.floor(curr_skill_level) == curr_skill_level && $.isNumeric(curr_skill_level)) {
+                        min_level = parseInt(curr_skill_level, 10);
+                    } else{
+                        min_level = parseInt($(curr_skill_level).find(".ui-slider-pip-selected-initial .ui-slider-label").attr('data-value'), 10);
+                    }
+                }
+                _slider.slider({ min: min_level, max: 5, value: string});
                 _slider.slider("pips", {rest: "label"});
                 _slider.slider({
                     change: function(event, ui) {
@@ -66,12 +69,14 @@
         });
     </script>
     <script type="text/javascript" charset="utf-8">
-			$(document).ready( function () {
-				$('#skill_table').dataTable().makeEditable({
+            $(document).ready( function () {
+                $('#skill_table').dataTable().makeEditable({
                         oEditableSettings: { event: 'click' },
                         sUpdateURL: "{{ url_for('update_skill_level') }}",
                         sAddDataType: "json",
-                    aoColumns:[null, null, null, null, null, {type: 'slider', tooltip: 'Click to edit',indicator: 'Saving skill level...', name: 'skill_level'}, null]
+                    aoColumns:[null, null, null, null, null, 
+                        {type: 'slider', tooltip: 'Click to edit',indicator: 'Saving...', name: 'skill_level'}, 
+                        {type: 'slider', tooltip: 'Click to edit',indicator: 'Saving...', name: 'desired_skill_level'}]
                 })
             });
 		</script>
