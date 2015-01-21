@@ -1,0 +1,9 @@
+flask
+webassets
+wtforms
+flask_sqlalchemy
+Flask-Login
+Flask-Assets
+Flask-WhooshAlchemy
+Flask-WTF
+Flask-Babel
